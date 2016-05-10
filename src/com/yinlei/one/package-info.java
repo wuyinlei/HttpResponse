@@ -5,4 +5,4 @@
  * @author wuyin
  *
  */
-package com.yinlei;
+package com.yinlei.one;
