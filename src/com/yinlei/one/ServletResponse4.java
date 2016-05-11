@@ -56,6 +56,12 @@ public class ServletResponse4 extends HttpServlet {
 		graphics.setFont(new Font("幼圆", Font.BOLD + Font.ITALIC, 24));
 
 		Random r = new Random();
+		/*
+		 * // 干扰线 设置画笔颜色 graphics.setColor(Color.gray); // 画30条干扰线 for (int i =
+		 * 0; i < 30; i++) { graphics.drawLine(r.nextInt(width),
+		 * r.nextInt(height), r.nextInt(width), r.nextInt(height)); }
+		 */
+
 		// 设定画笔的颜色
 		graphics.setColor(Color.blue);
 		//
@@ -65,9 +71,9 @@ public class ServletResponse4 extends HttpServlet {
 		s = "\u5317\u4EAC\u6B22\u8FCE\u4F60\u4F60\u53EF\u77E5\u9053hellobeijing";
 		for (int i = 0; i < 4; i++) {
 			char c = s.charAt(r.nextInt(s.length()));
-			//产生  1   -1
+			// 产生 1 -1
 			int flag = r.nextBoolean() ? 1 : -1;
-			//可以上下左右随机
+			// 可以上下左右随机
 			graphics.drawString(c + "", 20 + 40 * i + flag * r.nextInt(10), 20 + flag * r.nextInt(5));
 		}
 
@@ -77,6 +83,11 @@ public class ServletResponse4 extends HttpServlet {
 		 * // 随机产生4个数字输出到页面 for (int i = 0; i < 4; i++) { int n = r.nextInt(10);
 		 * // 10以内的数字 // 画到图像上 graphics.drawString(n + "", 20 + 40 * i, 20); }
 		 */
+
+		// 告诉客户端，不要缓存,这样每次刷新的时候就会去服务器请求新的数据
+		response.setHeader("Expires", -1 + "");
+		response.setHeader("Cache-control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
 
 		// 将图片输出到客户端
 		try {
