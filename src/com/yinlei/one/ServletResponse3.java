@@ -34,13 +34,14 @@ public class ServletResponse3 extends HttpServlet {
 		ServletOutputStream os = response.getOutputStream();
 
 		// 对中文进行编码
-		// 拿到中文的文件名
+		// 拿到中文的文件名    注意  “/”----->"\\"
 		String name = path.substring(path.lastIndexOf("\\") + 1, path.length());
-		System.out.println("编码前的结果："+name);
-		//对中文文件名进行编码
-		 name = URLEncoder.encode(name, "utf-8");
-		 System.out.println("编码后的结果："+name);
-		// 通知游览器以下载的方式
+		System.out.println("编码前的结果：" + name);
+		// 对中文文件名进行编码
+		name = URLEncoder.encode(name, "utf-8");
+		System.out.println("编码后的结果：" + name);
+
+		// 通知游览器以下载的方式查看
 		response.setHeader("Content-Disposition", "attachment;filename=" + name);
 
 		while ((b = is.read(bs)) != -1) {

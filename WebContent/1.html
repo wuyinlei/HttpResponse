@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function change() {
+		alert("hello");
+		var img = document.getElementById("img");
+		//加一个无意义的参数，解决缓存的一个问题,目的是让地址每次都变化
+		img.src = "/HttpResponse/ServletResponse4?t=" + new Date().getTime();
+
+	}
+</script>
+</head>
+<body>
+	<form action="">
+		姓名:<input type=""><br> 年龄:<input type=""><br>
+		请输入验证码:<input type="text" name="code">&nbsp;&nbsp; <img
+			src="/HttpResponse/ServletResponse4" id="img"> <a
+			href="javascript:change()">再换一张</a>
+
+	</form>
+</body>
+</html>
